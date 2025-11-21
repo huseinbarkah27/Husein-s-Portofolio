@@ -146,3 +146,46 @@ body.pdf-mode .reveal {
     color: black !important;
   }
 }
+
+/* Hindari scroll horizontal */
+html,
+body {
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Media tidak melebar melebihi kontainer */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Buat dekorasi hero tidak memaksa overflow di layar kecil */
+.hero-bg {
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  width: min(36rem, 60vw);
+  height: min(36rem, 60vw);
+  pointer-events: none;
+}
+
+/* Buat widget chat responsif agar tidak menambah lebar halaman */
+#ai-chat-widget #chat-window {
+  max-width: calc(100vw - 48px);
+  width: 100%;
+  right: 12px;
+  left: auto;
+}
+
+#ai-chat-widget > button {
+  max-width: calc(100vw - 48px);
+}
+
+/* Pecah kata panjang agar tidak meluap */
+* {
+  word-break: break-word;
+}
