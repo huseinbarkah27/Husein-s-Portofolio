@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Husein's Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: "#1a1a1a",
+              darker: "#121212",
+              gold: "#d4af37",
+              offwhite: "#f5f5f5",
+              greytext: "#a3a3a3",
+              chatbg: "#252525",
+            },
+            fontFamily: {
+              sans: ["Lato", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            animation: {
+              "bounce-slow": "bounce 3s infinite",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="antialiased overflow-x-hidden relative" id="main-content">
+    <nav
+      class="fixed w-full z-50 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-white/5 no-print"
+      id="navbar"
+      data-html2canvas-ignore="true"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="font-serif text-2xl font-semibold tracking-wider text-white hover:text-gold transition-colors"
+        >
+          Husein<span class="text-gold">.</span>
+        </a>
+
+        <div
+          class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-300"
+        >
+          <a href="#about" class="nav-link hover:text-white">Tentang</a>
+          <a href="#skills" class="nav-link hover:text-white">Keahlian</a>
+          <a href="#cv" class="nav-link hover:text-white">Riwayat (CV)</a>
+          <a href="#contact" class="nav-link hover:text-white">Kontak</a>
+        </div>
+
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-white focus:outline-none"
+        >
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-darker border-t border-white/5 absolute w-full"
+      >
+        <div class="flex flex-col px-6 py-4 space-y-4 text-center">
+          <a
+            href="#about"
+            class="text-gray-300 hover:text-gold"
+            onclick="closeMenu()"
+            >About Me</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-300 hover:text-gold"
+            onclick="closeMenu()"
+            >Skills</a
+          >
+          <a
+            href="#cv"
+            class="text-gray-300 hover:text-gold"
+            onclick="closeMenu()"
+            >CV</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-300 hover:text-gold"
+            onclick="closeMenu()"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <header
+      id="home"
+      class="min-h-screen flex items-center justify-center relative px-6 pt-16"
+    >
+      <div
+        class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"
+      ></div>
+
+      <div class="text-center z-10 max-w-3xl reveal active">
+        <p class="text-gold uppercase tracking-[0.2em] text-sm mb-4">
+          Hello World!
+        </p>
+        <h1
+          class="font-serif text-5xl md:text-7xl lg:text-8xl font-medium mb-6 leading-tight text-white min-h-[1.2em]"
+        >
+          <span id="typing-text"></span
+          ><span class="text-gold animate-pulse">|</span>
+        </h1>
+        <p
+          class="text-greytext text-lg md:text-xl font-light mb-10 max-w-xl mx-auto leading-relaxed"
+        >
+          Hanya seorang mahasiswa yang hobi mengulik teknologi dan menciptakan
+          sesuatu yang bermanfaat bagi banyak orang.
+        </p>
+        <div
+          class="flex justify-center gap-6 no-print"
+          data-html2canvas-ignore="true"
+        >
+          <a
+            href="#contact"
+            class="border border-white/20 hover:border-gold hover:text-gold text-white px-8 py-3 rounded-md transition-all duration-300 text-sm tracking-widest uppercase"
+          >
+            Hubungi Saya
+          </a>
+          <a
+            href="#cv"
+            class="bg-white text-dark hover:bg-gold hover:text-white px-8 py-3 rounded-md transition-all duration-300 text-sm tracking-widest uppercase font-semibold"
+          >
+            Lihat CV
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce scroll-indicator no-print"
+        data-html2canvas-ignore="true"
+      >
+        <i data-lucide="arrow-down" class="text-white/30 w-6 h-6"></i>
+      </div>
+    </header>
+
+    <section id="about" class="py-24 bg-darker">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="reveal relative group">
+            <div
+              class="absolute -inset-2 bg-gradient-to-r from-gold/20 to-purple-500/0 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+            ></div>
+            <div
+              class="relative w-full aspect-[3/4] bg-neutral-800 rounded-sm overflow-hidden border border-white/5 flex items-center justify-center"
+            >
+              <img
+                src="image/husein google.jpg"
+                alt="Profile"
+                class="object-cover w-full h-full opacity-80 hover:opacity-100 rounded-lg transition-opacity duration-500 grayscale hover:grayscale-0"
+              />
+            </div>
+          </div>
+
+          <div class="reveal">
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">
+              Tentang Saya
+            </h2>
+            <div class="w-12 h-0.5 bg-gold mb-8"></div>
+            <p class="text-greytext leading-loose mb-6 font-light">
+              Halo, saya Husein. Saya adalah seorang mahasiswa Bisnis Digital
+              yang memiliki minat besar dalam pengembangan web dan desain UI/UX.
+            </p>
+            <p class="text-greytext leading-loose mb-8 font-light">
+              Saya percaya bahwa desain yang baik bukan hanya tentang apa yang
+              terlihat, tetapi bagaimana hal itu berfungsi. Pendekatan saya
+              selalu berpusat pada pengguna namun tetap memperhatikan estetika
+              yang memanjakan mata.
+            </p>
+
+            <div class="flex space-x-6 mt-8">
+              <a
+                href="https://www.instagram.com/huseinbarkah"
+                class="text-white hover:text-gold transition-colors"
+                ><i data-lucide="instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/husein-barkah-347b09312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                class="text-white hover:text-gold transition-colors"
+                ><i data-lucide="linkedin"></i
+              ></a>
+              <a
+                href="https://x.com/Hesense27?t=1hfPDDoudqA6H8J70XZH2g&s=09"
+                class="text-white hover:text-gold transition-colors"
+                ><i data-lucide="twitter"></i
+              ></a>
+              <a
+                href="https://github.com/huseinbarkah27"
+                class="text-white hover:text-gold transition-colors"
+                ><i data-lucide="github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-dark">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">
+            Keahlian & Tools
+          </h2>
+          <p class="text-greytext">
+            Teknologi dan alat yang saya gunakan sehari-hari.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 reveal">
+          <div>
+            <h3
+              class="text-xl font-serif text-white mb-6 border-b border-white/10 pb-2 inline-block"
+            >
+              Teknis
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-sm font-light text-gray-300"
+                    >HTML & CSS / Tailwind</span
+                  >
+                  <span class="text-xs text-gold">90%</span>
+                </div>
+                <div class="w-full bg-white/5 h-1 rounded-full">
+                  <div
+                    class="bg-gold h-1 rounded-full"
+                    style="width: 90%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-sm font-light text-gray-300"
+                    >JavaScript (React/Vue)</span
+                  >
+                  <span class="text-xs text-gold">80%</span>
+                </div>
+                <div class="w-full bg-white/5 h-1 rounded-full">
+                  <div
+                    class="bg-gold h-1 rounded-full"
+                    style="width: 80%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-sm font-light text-gray-300"
+                    >UI/UX Design (Figma)</span
+                  >
+                  <span class="text-xs text-gold">70%</span>
+                </div>
+                <div class="w-full bg-white/5 h-1 rounded-full">
+                  <div
+                    class="bg-gold h-1 rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-xl font-serif text-white mb-6 border-b border-white/10 pb-2 inline-block"
+            >
+              Lainnya
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="px-4 py-2 border border-white/10 text-sm text-greytext rounded-full hover:border-gold hover:text-gold transition-colors cursor-default"
+                >Canva</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 text-sm text-greytext rounded-full hover:border-gold hover:text-gold transition-colors cursor-default"
+                >SEO Basic</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 text-sm text-greytext rounded-full hover:border-gold hover:text-gold transition-colors cursor-default"
+                >Git Version Control</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 text-sm text-greytext rounded-full hover:border-gold hover:text-gold transition-colors cursor-default"
+                >Msc</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 text-sm text-greytext rounded-full hover:border-gold hover:text-gold transition-colors cursor-default"
+                >Vibe Coding</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 text-sm text-greytext rounded-full hover:border-gold hover:text-gold transition-colors cursor-default"
+                >Copywriting</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv" class="py-24 bg-darker">
+      <div class="max-w-4xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-16 reveal"
+        >
+          <div>
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-2">
+              Curriculum Vitae
+            </h2>
+            <p class="text-greytext">Perjalanan karir dan pendidikan saya.</p>
+          </div>
+
+          <a
+            href="assets/CV.Husein Barkah Pambudi.pdf"
+            id="download-btn"
+            class="no-print mt-4 md:mt-0 flex items-center gap-2 text-gold hover:text-white transition-colors text-sm uppercase tracking-wider border-b border-gold pb-1 hover:border-white focus:outline-none cursor-pointer"
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            data-html2canvas-ignore="true"
+          >
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span id="btn-text">Download CV (PDF)</span>
+          </a>
+        </div>
+
+        <div
+          class="relative border-l border-white/10 ml-3 md:ml-6 space-y-12 reveal"
+        >
+          <div class="relative pl-8 md:pl-12">
+            <div
+              class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_10px_rgba(212,175,55,0.5)]"
+            ></div>
+            <span class="text-xs text-gold uppercase tracking-widest mb-1 block"
+              >2023 - SEKARANG</span
+            >
+            <h3 class="text-xl text-white font-serif font-medium">Mahasiswa</h3>
+            <h4 class="text-sm text-greytext mb-4">
+              Sumbawa University of technology
+            </h4>
+            <p
+              class="text-gray-400 font-light text-sm leading-relaxed max-w-2xl"
+            >
+              Sedang menempuh studi di bidang Bisnis Digital dengan fokus pada
+              pengembangan web dan desain UI/UX UMKM.
+            </p>
+          </div>
+
+          <div class="relative pl-8 md:pl-12">
+            <div
+              class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-neutral-600"
+            ></div>
+            <span class="text-xs text-gold uppercase tracking-widest mb-1 block"
+              >2020 - 2023</span
+            >
+            <h3 class="text-xl text-white font-serif font-medium">Siswa</h3>
+            <h4 class="text-sm text-greytext mb-4">
+              Muadz Bin Jabal Boarding School
+            </h4>
+            <p
+              class="text-gray-400 font-light text-sm leading-relaxed max-w-2xl"
+            >
+              Menyelesaikan pendidikan menengah atas dengan fokus pada ilmu
+              Diniyah dan Sosial
+            </p>
+          </div>
+
+          <div class="relative pl-8 md:pl-12">
+            <div
+              class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-neutral-600"
+            ></div>
+            <span class="text-xs text-gold uppercase tracking-widest mb-1 block"
+              >2017 - 2020</span
+            >
+            <h3 class="text-xl text-white font-serif font-medium">Siswa</h3>
+            <h4 class="text-sm text-greytext mb-4">
+              Abu Bakar Al-Islamy Boarding School
+            </h4>
+            <p
+              class="text-gray-400 font-light text-sm leading-relaxed max-w-2xl"
+            >
+              Menyelesaikan pendidikan menengah pertama dengan fokus pada ilmu
+              Diniyah dan Umum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="bg-black py-20 border-t border-white/5">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="font-serif text-3xl text-white mb-8 reveal">
+          Mari Bekerja Sama
+        </h2>
+        <p class="text-greytext mb-10 max-w-lg mx-auto font-light reveal">
+          Apakah Anda memiliki proyek menarik? Saya selalu terbuka untuk diskusi
+          produk baru, peluang kreatif, atau sekadar menyapa.
+        </p>
+
+        <a
+          href="mailto:email@contoh.com"
+          class="reveal inline-block text-2xl md:text-4xl text-white hover:text-gold transition-colors font-serif border-b border-white/20 hover:border-gold pb-2 mb-12"
+        >
+          pambudihusein89@gmail.com
+        </a>
+
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 uppercase tracking-widest mt-12 pt-8 border-t border-white/5"
+        >
+          <p>&copy; 2025 Husein Barkah. All Rights Reserved.</p>
+          <div class="mt-4 md:mt-0 space-x-4">
+            <a
+              href="https://www.instagram.com/huseinbarkah"
+              class="hover:text-white transition-colors"
+              >Instagram</a
+            >
+            <a href="#" class="hover:text-white transition-colors">Github</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="ai-chat-widget"
+      class="fixed bottom-6 right-6 z-50 flex flex-col items-end no-print"
+      data-html2canvas-ignore="true"
+    >
+      <div
+        id="chat-window"
+        class="hidden mb-4 w-80 md:w-96 bg-darker border border-white/10 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[500px] transition-all duration-300 transform origin-bottom-right scale-95 opacity-0"
+      >
+        <div
+          class="bg-neutral-900 p-4 border-b border-white/5 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 rounded-full bg-gradient-to-tr from-gold to-yellow-600 flex items-center justify-center"
+            >
+              <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-white text-sm font-semibold">
+                Husein's Assistant
+              </h3>
+              <p class="text-xs text-green-400 flex items-center gap-1">
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"
+                ></span>
+                Online
+              </p>
+            </div>
+          </div>
+          <button onclick="toggleChat()" class="text-gray-400 hover:text-white">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div
+          id="chat-messages"
+          class="flex-1 overflow-y-auto p-4 space-y-4 bg-chatbg scroll-smooth"
+        >
+          <div class="flex gap-3">
+            <div
+              class="w-8 h-8 rounded-full bg-neutral-800 flex-shrink-0 flex items-center justify-center border border-white/5"
+            >
+              <i data-lucide="bot" class="w-4 h-4 text-gold"></i>
+            </div>
+            <div
+              class="bg-neutral-800 border border-white/5 rounded-2xl rounded-tl-none p-3 text-sm text-gray-200 shadow-sm max-w-[85%]"
+            >
+              <p>
+                Halo! 👋 Saya asisten AI untuk Husein. Ada yang bisa saya bantu
+                terkait keahlian atau pengalaman Husein?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 bg-neutral-900 border-t border-white/5">
+          <form
+            id="chat-form"
+            onsubmit="handleChatSubmit(event)"
+            class="relative"
+          >
+            <input
+              type="text"
+              id="chat-input"
+              class="w-full bg-neutral-800 text-white text-sm rounded-full pl-4 pr-12 py-3 focus:outline-none focus:ring-1 focus:ring-gold border border-white/5 placeholder-gray-500"
+              placeholder="Tanya tentang Andi..."
+              autocomplete="off"
+            />
+            <button
+              type="submit"
+              class="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-gold hover:bg-yellow-600 rounded-full flex items-center justify-center transition-colors text-white disabled:opacity-50 disabled:cursor-not-allowed"
+              id="send-btn"
+            >
+              <i data-lucide="send" class="w-4 h-4 ml-0.5"></i>
+            </button>
+          </form>
+          <p class="text-[10px] text-center text-gray-600 mt-2">
+            Powered by Gemini AI ✨
+          </p>
+        </div>
+      </div>
+
+      <button
+        onclick="toggleChat()"
+        class="group flex items-center justify-center gap-2 bg-white text-dark hover:bg-gold hover:text-white px-5 py-3 rounded-full shadow-lg shadow-gold/10 transition-all duration-300 font-medium text-sm border border-transparent hover:border-gold/20"
+      >
+        <i
+          data-lucide="sparkles"
+          class="w-4 h-4 text-gold group-hover:text-white"
+        ></i>
+        <span>✨ Tanya AI tentang Husein</span>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
