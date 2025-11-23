@@ -47,30 +47,6 @@ function downloadPDF(btn) {
     });
 }
 
-
-
-  const iconHtml = isUser
-    ? `<div class="w-8 h-8 rounded-full bg-gold flex-shrink-0 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 text-white"></i></div>`
-    : `<div class="w-8 h-8 rounded-full bg-neutral-800 flex-shrink-0 flex items-center justify-center border border-white/5"><i data-lucide="bot" class="w-4 h-4 text-gold"></i></div>`;
-
-  const bubbleClass = isUser
-    ? "bg-gold text-white rounded-2xl rounded-tr-none"
-    : "bg-neutral-800 text-gray-200 border border-white/5 rounded-2xl rounded-tl-none";
-
-  const contentHtml = isUser ? text : marked.parse(text);
-
-  div.innerHTML = `
-                ${iconHtml}
-                <div class="${bubbleClass} p-3 text-sm shadow-sm max-w-[85%] prose prose-invert">
-                    ${contentHtml}
-                </div>
-            `;
-
-  chatMessages.appendChild(div);
-  lucide.createIcons();
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
 function addLoading() {
   const div = document.createElement("div");
   div.id = "loading-indicator";
@@ -221,7 +197,7 @@ function reveal() {
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 100; 
+    var elementVisible = 100;
 
     if (elementTop < windowHeight - elementVisible) {
       reveals[i].classList.add("active");
