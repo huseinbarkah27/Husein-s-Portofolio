@@ -121,9 +121,9 @@ body.pdf-mode .reveal {
   transform: none !important;
 }
 
-@media (max-width: 640px) {
-  .hero-bg {
-    top: 10%;
+@media screen and (max-width: 600px) {
+  body {
+    width: 100%;
   }
 }
 
