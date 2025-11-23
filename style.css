@@ -121,6 +121,12 @@ body.pdf-mode .reveal {
   transform: none !important;
 }
 
+@media (max-width: 640px) {
+  .hero-bg {
+    top: 10%;
+  }
+}
+
 @media print {
   #navbar,
   #mobile-menu-btn,
@@ -147,14 +153,12 @@ body.pdf-mode .reveal {
   }
 }
 
-/* Hindari scroll horizontal */
 html,
 body {
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
-/* Media tidak melebar melebihi kontainer */
 img,
 video,
 iframe {
@@ -163,7 +167,6 @@ iframe {
   display: block;
 }
 
-/* Buat dekorasi hero tidak memaksa overflow di layar kecil */
 .hero-bg {
   left: 50%;
   top: 20%;
@@ -173,7 +176,6 @@ iframe {
   pointer-events: none;
 }
 
-/* Buat widget chat responsif agar tidak menambah lebar halaman */
 #ai-chat-widget #chat-window {
   max-width: calc(100vw - 48px);
   width: 100%;
@@ -185,7 +187,6 @@ iframe {
   max-width: calc(100vw - 48px);
 }
 
-/* Pecah kata panjang agar tidak meluap */
 * {
   word-break: break-word;
 }

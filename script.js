@@ -47,73 +47,7 @@ function downloadPDF(btn) {
     });
 }
 
-const apiKey = "";
-const chatWindow = document.getElementById("chat-window");
-const chatMessages = document.getElementById("chat-messages");
-const chatInput = document.getElementById("chat-input");
-const sendBtn = document.getElementById("send-btn");
-let isChatOpen = false;
 
-const portfolioContext = `
-        Anda adalah asisten AI profesional untuk website portfolio Husein Barkah.
-        Gunakan gaya bahasa yang ramah, sopan, dan profesional (Bahasa Indonesia).
-        
-        DATA DIRI HUSEIN:
-        - Nama: Husein Barkah Pambudi
-        - Role: Mahasiswa & Pengembang Web
-        - Ringkasan: Spesialis pengalaman digital yang bersih, fungsional, dan estetis.
-        - Lokasi: Nusa Tenggara Barat, Indonesia.
-        
-        KEAHLIAN (Hard Skills):
-        - HTML, CSS, Tailwind (Expert - 90%)
-        - JavaScript, React, Vue (Advanced - 80%)
-        - UI/UX Design, Figma (Advanced - 70%)
-        - Tools lain: Canva, Git, SEO Basic.
-        
-        KEAHLIAN (Soft Skills):
-        - Public Speaking, Copywriting, Problem Solving, Time Management.
-        
-        PENGALAMAN KERJA:
-       - Freelance Web Developer (2024 - Sekarang): Membangun website untuk
-        
-        PENDIDIKAN:
-        - Universitas Teknologi Digital NTB (2023 - Sekarang)
-        - SMA Muadz Bin Jabal Boarding School (2020 - 2023)
-        - SMP Abu Bakar Al-Islamy Boarding School (2017 - 2020)
-
-        
-        KONTAK:
-        - Email: pambudihusein89@gmail.com
-        - Socials: Dribbble, Behance, Github, LinkedIn, Twitter, Instagram.
-
-        INSTRUKSI KHUSUS:
-        1. Jawablah pertanyaan HANYA berdasarkan data di atas.
-        2. Jika ditanya hal di luar konteks (misal: "resep masakan"), jawab sopan bahwa Anda hanya bisa membahas tentang Andi.
-        3. Jawablah dengan ringkas (maksimal 3-4 kalimat) kecuali diminta detail.
-        4. Jika user ingin mempekerjakan Andi, arahkan ke email pambudihusein89@gmail.com
-        `;
-
-function toggleChat() {
-  isChatOpen = !isChatOpen;
-  if (isChatOpen) {
-    chatWindow.classList.remove("hidden");
-    setTimeout(() => {
-      chatWindow.classList.remove("scale-95", "opacity-0");
-      chatWindow.classList.add("scale-100", "opacity-100");
-      chatInput.focus();
-    }, 10);
-  } else {
-    chatWindow.classList.remove("scale-100", "opacity-100");
-    chatWindow.classList.add("scale-95", "opacity-0");
-    setTimeout(() => {
-      chatWindow.classList.add("hidden");
-    }, 300);
-  }
-}
-
-function addMessage(text, isUser) {
-  const div = document.createElement("div");
-  div.className = "flex gap-3 " + (isUser ? "flex-row-reverse" : "");
 
   const iconHtml = isUser
     ? `<div class="w-8 h-8 rounded-full bg-gold flex-shrink-0 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 text-white"></i></div>`
@@ -287,7 +221,7 @@ function reveal() {
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 100; // Jarak trigger dari bawah
+    var elementVisible = 100; 
 
     if (elementTop < windowHeight - elementVisible) {
       reveals[i].classList.add("active");
