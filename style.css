@@ -176,17 +176,6 @@ iframe {
   pointer-events: none;
 }
 
-#ai-chat-widget #chat-window {
-  max-width: calc(100vw - 48px);
-  width: 100%;
-  right: 12px;
-  left: auto;
-}
-
-#ai-chat-widget > button {
-  max-width: calc(100vw - 48px);
-}
-
 * {
   word-break: break-word;
 }
